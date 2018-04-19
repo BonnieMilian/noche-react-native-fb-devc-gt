@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  menuSelect: {
+    padding: 15,
+    borderRadius: 40,
+    margin: 15
+  },
 });
 
 export default styles;

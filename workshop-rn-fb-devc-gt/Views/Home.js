@@ -12,10 +12,26 @@ export default class Home extends Component {
     header: null
   }
   */
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
+        <TouchableOpacity
+          style={[styles.menuSelect, {backgroundColor: '#c00000'}]}
+          onPress={() => navigate('MyAlbum')}
+        >
+          <Text style={{color: 'white', fontSize: 20}}>My Album</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.menuSelect, {backgroundColor: '#0000c0'}]}
+          onPress={() => navigate('AlbumStore')}
+        >
+          <Text style={{color: 'white', fontSize: 20}}>Album Store</Text>
+        </TouchableOpacity>
       </View>
     );
   }
