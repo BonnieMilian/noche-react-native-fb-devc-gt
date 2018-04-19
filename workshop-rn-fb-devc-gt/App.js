@@ -1,33 +1,22 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
+import React, {Component} from 'react';
+import { StackNavigator } from 'react-navigation';
+import Home from './Views/Home.js';
+import AlbumStore from './Views/AlbumStore.js';
+import MyAlbum from './Views/MyAlbum.js';
 
-export default class App extends React.Component {
+const NavigationMap = StackNavigator(
+  {
+    Home: { screen: Home },
+    AlbumStore: { screen: AlbumStore },
+    MyAlbum: { screen: MyAlbum }
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={{ margin: 30 }}>FB DevC GT</Text>
-        <Image source={require('./assets/database.png')} />
-        <Image source={require('./assets/login.png')}
-               style={{marginTop: 10}} />
-        <Image source={require('./assets/graph.png')}
-               style={{width: 100, height: 100, marginTop: 20}} />
-        <Image source={require('./assets/cup.png')}
-               style={{width: 200, resizeMode: 'contain'}} />
-      </View>
-    );
+    return <NavigationMap /> ;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
