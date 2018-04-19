@@ -1,13 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image
+} from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text style={{ margin: 30 }}>FB DevC GT</Text>
+        <Image source={require('./assets/database.png')} />
+        <Image source={require('./assets/login.png')}
+               style={{marginTop: 10}} />
+        <Image source={require('./assets/graph.png')}
+               style={{width: 100, height: 100, marginTop: 20}} />
+        <Image source={require('./assets/cup.png')}
+               style={{width: 200, resizeMode: 'contain'}} />
       </View>
     );
   }
