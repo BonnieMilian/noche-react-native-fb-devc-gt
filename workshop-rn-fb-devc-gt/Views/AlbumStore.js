@@ -21,6 +21,7 @@ export default class AlbumStore extends Component {
   }
 
   onPressCountry(id) {
+    footballApi.saveCountry(id);
     alert(id);
   }
 

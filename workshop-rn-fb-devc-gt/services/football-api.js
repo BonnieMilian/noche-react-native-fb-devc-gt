@@ -1,3 +1,4 @@
+import { AsyncStorage } from 'react-native';
 import axios from "axios";
 const secondaryDate = require('../teams.json');
 
@@ -12,5 +13,9 @@ export default {
     } catch(err) {
       return secondaryDate;
     }
+  },
+  async saveCountry(country) {
+    let countriesList = await AsyncStorage.getItem('countries');
+    countriesList = JSON.parse(countriesList);
   }
 };
