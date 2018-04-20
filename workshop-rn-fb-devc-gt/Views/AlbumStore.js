@@ -26,11 +26,27 @@ export default class AlbumStore extends Component {
     });
   }
 
-  render() {
+  renderTeams() {
     return (
-      <View style={styles.container}>
-        <Text>Album Store</Text>
+      <View>
+        <Text>{JSON.stringify(this.state.teams)}</Text>;
       </View>
     );
+  }
+
+  renderLoading() {
+    return (
+      <View>
+        <Text> Loading... </Text>s
+      </View>
+    )
+  }
+
+  render() {
+    const {
+      isLoading
+    } = this.state;
+
+    return (isLoading) ? this.renderLoading() : this.renderTeams();
   }
 }
