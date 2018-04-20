@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import {
   View,
-  Text
+  Text,
+  StyleSheet,
+  FlatList,
 } from 'react-native';
 import styles from '../config/styles.js';
 //Services
 import footballApi from '../services/football-api';
+//Components
+import Country from '../components/Country';
 
 export default class AlbumStore extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +19,11 @@ export default class AlbumStore extends Component {
       isLoading: true,
     }
   }
+
+  onPressCountry(id) {
+    alert(id);
+  }
+
   componentDidMount() {
     const worldCupId = 467;
     footballApi.getTeamsByCompetition(worldCupId).then((teams) => {
@@ -27,17 +35,22 @@ export default class AlbumStore extends Component {
   }
 
   renderTeams() {
+    const { teams } = this.state;
     return (
       <View>
-        <Text>{JSON.stringify(this.state.teams)}</Text>;
+        <FlatList
+          data={teams.teams}
+          renderItem={({ item }) => { 
+            return (<Country name={item.name} image={item.crestUrl} onPressCountry={() => this.onPressCountry(item.name)} />);
+          }} />
       </View>
     );
   }
 
   renderLoading() {
     return (
-      <View>
-        <Text> Loading... </Text>
+      <View style={localStyles.loadingStyle}>
+        <Text style={localStyles.loadingText}> Loading... </Text>
       </View>
     )
   }
@@ -50,3 +63,15 @@ export default class AlbumStore extends Component {
     return (isLoading) ? this.renderLoading() : this.renderTeams();
   }
 }
+
+const localStyles = StyleSheet.create({
+  loadingStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  loadingText: {
+    color: '#000000',
+    fontSize: 26
+  }
+});

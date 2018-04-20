@@ -1,11 +1,16 @@
 import axios from "axios";
+const secondaryDate = require('../teams.json');
 
 const API_URL = 'http://api.football-data.org/v1';
 
 export default {
   async getTeamsByCompetition(competitionId) {
     const teamsRequestUrl = `${API_URL}/competitions/${competitionId}/teams`;
-    const teams = await axios.get(teamsRequestUrl);
-    return teams.data;
+    try {
+      const teams = await axios.get(teamsRequestUrl);
+      return teams.data;
+    } catch(err) {
+      return secondaryDate;
+    }
   }
 };
