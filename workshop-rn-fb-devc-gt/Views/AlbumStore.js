@@ -37,7 +37,7 @@ export default class AlbumStore extends Component {
   renderLoading() {
     return (
       <View>
-        <Text> Loading... </Text>s
+        <Text> Loading... </Text>
       </View>
     )
   }
